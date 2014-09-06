@@ -1,2 +1,4 @@
 pytumblr
 pyyaml
+Django
+beautifulsoup4
