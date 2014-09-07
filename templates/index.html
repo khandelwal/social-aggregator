@@ -23,12 +23,21 @@
         <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Experience</h3>
 
         {%for p in posts %}
-            <p>
-                <strong>&ldquo;</strong> {{p.text}} <strong>&rdquo;</strong>
-            </p>
-            <p>
-                &mdash; {{p.country}}
-            </p>
+            {% if p.text %}
+                <p>
+                    <strong>&ldquo;</strong> {{p.text}} <strong>&rdquo;</strong>
+                </p>
+                <p>
+                    &mdash; {{p.country}}
+                </p>
+            {% else %}
+                <p>
+                    <img src="{{p.photo_url}}"/>
+                </p>
+                <p>
+                    &mdash; {{p.country}}
+                </p>
+            {% endif %}
         {%endfor %}
       </section>
       <footer>

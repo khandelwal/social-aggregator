@@ -21,6 +21,10 @@ def process_for_output(posts):
             processed_posts.append({
                 'country': p['country'],
                 'text': p['selected_paragraph']})
+        elif 'selected_photo' in p:
+            processed_posts.append({
+                'photo_url': p['selected_photo']['original_size']['url'],
+                'country': p['country']})
     return processed_posts
 
 if __name__ == '__main__':
