@@ -5,6 +5,7 @@ import pytumblr
 import yaml
 from bs4 import BeautifulSoup
 
+
 def operating_countries():
     """ Read in the list of countries PeaceCorps is active in. Express those
     names as tags and return that list. """
@@ -43,14 +44,19 @@ def get_tagged_posts(tag, multiples=3):
 
     return results
 
+def tag_text(tag)
+    text = ''.join(p.findAll(text=True, recursive=False))
+    return text
+
 def pick_paragraph(post_body):
     """ We're going to randomly pick one paragraph to display out of many.  """
     pbs = BeautifulSoup(post_body)
     paragraphs = pbs.find_all('p')
     paragraphs = [p for p in paragraphs if len(p.find_all('img')) == 0]
-    paragraphs = [p for p in paragraphs if len(p.contents) > 0]
-    paragraph = paragraphs[random.randrange(0, len(paragraphs))]
-    return paragraph
+    paragraphs = [p for p in paragraphs if len(tag_text(p)) > 150]
+    if len(paragraphs) > 0:
+        paragraph = paragraphs[random.randrange(0, len(paragraphs))]
+        return paragraph
 
 def pick_photo(photos):
     photo = photos[random.randrange(0, len(photos))]
@@ -67,7 +73,8 @@ def select_posts(posts):
         if len(tagged_country) > 0 and p['note_count'] > 0:
             if 'body' in p:
                 paragraph = pick_paragraph(p['body'])
-                p['selected_paragraph'] = paragraph.contents[0]
+                if paragraph:
+                    p['selected_paragraph'] = paragraph.contents[0]
             elif 'photos' in p:
                 photo = pick_photo(p['photos'])
                 p['selected_photo'] = photo
@@ -76,6 +83,6 @@ def select_posts(posts):
             selected.append(p)
     return selected
             
-if __name__ == '__main__':
-    posts  = get_tagged_posts('peacecorps')
+if __name__=='__main__':
+    posts = get_tagged_posts('peacecorps')
     select_posts(posts)

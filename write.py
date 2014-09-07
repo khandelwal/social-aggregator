@@ -21,7 +21,6 @@ def process_for_output(posts):
             processed_posts.append({
                 'country': p['country'],
                 'text': p['selected_paragraph']})
-            #processed_posts.append(p['selected_paragraph'])
     return processed_posts
 
 if __name__ == '__main__':
