@@ -44,8 +44,8 @@ def get_tagged_posts(tag, multiples=3):
 
     return results
 
-def tag_text(tag)
-    text = ''.join(p.findAll(text=True, recursive=False))
+def tag_text(tag):
+    text = ''.join(tag.findAll(text=True, recursive=False))
     return text
 
 def pick_paragraph(post_body):
