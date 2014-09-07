@@ -3,23 +3,23 @@ import django
 import tumblr
 from django.conf import settings
 
-def render(data):
+def render(posts):
     """ Use Django templates to render the output HTML. """
     settings.configure(
         DEBUG=True, TEMPLATE_DEBUG=True,
         TEMPLATE_DIRS=('/vagrant/code/social-aggregator/templates',))
     django.setup()
-    t = loader.get_template('output.html')
-    c = Context({'data':data})
+    t = loader.get_template('index.html')
+    c = Context({'posts':posts})
     l = t.render(c)
-    print l.strip('\n')   
+    print l.strip('\n').encode('utf-8')
 
 def process_for_output(posts):
     processed_posts = []
     for p in posts:
         if 'selected_paragraph' in p:
             processed_posts.append({
-                'country': p['country']
+                'country': p['country'],
                 'paragraph': p['selected_paragraph']
                 })
     return processed_posts
