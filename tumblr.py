@@ -48,6 +48,7 @@ def pick_paragraph(post_body):
     pbs = BeautifulSoup(post_body)
     paragraphs = pbs.find_all('p')
     paragraphs = [p for p in paragraphs if len(p.find_all('img')) == 0]
+    paragraphs = [p for p in paragraphs if len(p.contents) > 0]
     paragraph = paragraphs[random.randrange(0, len(paragraphs))]
     return paragraph
 
