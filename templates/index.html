@@ -20,7 +20,6 @@
 
         <p class="view"><a href="https://github.com/khandelwal/social-aggregator">View the Project on GitHub <small>khandelwal/social-aggregator</small></a></p>
 
-
         <ul>
           <li><a href="https://github.com/khandelwal/social-aggregator/zipball/master">Download <strong>ZIP File</strong></a></li>
           <li><a href="https://github.com/khandelwal/social-aggregator/tarball/master">Download <strong>TAR Ball</strong></a></li>
@@ -33,9 +32,10 @@
 
 <p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
 
-{% for p in posts %}
-    <p>{{p.paragraph}}</p>
-{% endfor %}
+{%for p in posts %}
+    {{p.text}}
+    {{p.country}}
+{%endfor %}
 
 <pre><code>$ cd your_repo_root/repo_name
 $ git fetch origin

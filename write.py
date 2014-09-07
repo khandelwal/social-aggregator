@@ -20,8 +20,8 @@ def process_for_output(posts):
         if 'selected_paragraph' in p:
             processed_posts.append({
                 'country': p['country'],
-                'paragraph': p['selected_paragraph']
-                })
+                'text': p['selected_paragraph']})
+            #processed_posts.append(p['selected_paragraph'])
     return processed_posts
 
 if __name__ == '__main__':

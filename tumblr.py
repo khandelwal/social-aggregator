@@ -66,12 +66,12 @@ def select_posts(posts):
         if len(tagged_country) > 0 and p['note_count'] > 0:
             if 'body' in p:
                 paragraph = pick_paragraph(p['body'])
-                p['selected_paragraph'] = paragraph
+                p['selected_paragraph'] = paragraph.contents[0]
             elif 'photos' in p:
                 photo = pick_photo(p['photos'])
                 p['selected_photo'] = photo
 
-            p['country'] = tagged_country
+            p['country'] = tagged_country[0]
             selected.append(p)
     return selected
             
